@@ -1,0 +1,1 @@
+ln -s /hadoop/bin/* /usr/bin/

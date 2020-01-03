@@ -1,0 +1,1 @@
+ln -s /java/bin/* /usr/bin/
