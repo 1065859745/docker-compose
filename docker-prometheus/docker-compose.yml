@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes: [./prometheus.yml:/etc/prometheus/prometheus.yml] # Prometheus.yml 配置文件映射
+    networks:
+      porker:
+        aliases: [prometheus]
+  alertmanager:
+    image: prom/alertmanager 
+    container_name: alertmanage
+    volumes: [./alertmanager.yml:/etc/alertmanager/alertmanager.yml] # alertmanager.yml 配置文件映射
+    networks:
+      porker:
+        aliases: [alertmanager]
+  blackbox:
+    image: prom/blackbox-exporter
+    container_name: blackbox
+    networks:
+      porker:
+        aliases: [blackbox]
+networks:
+  porker:
+    driver: bridge
